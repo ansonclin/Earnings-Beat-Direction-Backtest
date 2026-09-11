@@ -47,10 +47,6 @@ Beats were far more common than misses (303 vs. 43) — companies beat estimates
 
 **BMO/AMC timing ambiguity.** Described above under Technicals — this was the single trickiest correctness issue in the project, since getting it wrong doesn't throw an error, it just silently measures the wrong thing.
 
-**Analyst estimate revision data isn't historically available.** An earlier version of this project planned to use analyst estimate revision trends as a feature. yfinance's `get_eps_revisions()` and `get_earnings_estimate()` only return a snapshot of the *current* consensus — there's no way to ask what estimates looked like as of a specific past date. Since this couldn't be computed without lookahead for historical events, it was dropped rather than approximated.
-
-**Earlier version of this project used a machine learning model instead.** A logistic regression trained on `surprise` + `historical_volatility` was built and backtested first, reaching 51.4% accuracy — close to, but not meaningfully better than, the plain correlation check above. Given the model added real complexity (feature scaling, a train/test split, a real bug where it initially always predicted "up" without scaling) for a result barely different from the much simpler direct correlation, the project was rescoped to the simpler, more directly interpretable analysis.
-
 ## Known Limitations
 
 **Correlation, not causation, and no other factors considered.** This only checks whether beat/miss lines up with direction — it says nothing about *why*, and ignores guidance, sector trends, macro conditions, or anything said on the earnings call. A real example: AAPL beat estimates by +6.88% on 2026-07-30, and the stock still dropped 7.35% — exactly the kind of case this simple check can't explain.
