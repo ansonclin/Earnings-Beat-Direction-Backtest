@@ -10,3 +10,5 @@ def get_historical_volatility(ticker, earnings_date, window=30):
     daily_returns = prices["Close"].pct_change()
     volatility = daily_returns.tail(window).std()
     return volatility
+
+

@@ -12,8 +12,9 @@ misses = dataset[dataset["surprise"] < 0]
 beat_up_pct = (beats["direction"] == "up").mean()
 miss_down_pct = (misses["direction"] == "down").mean()
 
-correct = ((dataset["surprise"] > 0) & (dataset["direction"] == "up")) | \
-          ((dataset["surprise"] < 0) & (dataset["direction"] == "down"))
+beat_and_up = (dataset["surprise"] > 0) & (dataset["direction"] == "up")
+miss_and_down = (dataset["surprise"] < 0) & (dataset["direction"] == "down")
+correct = beat_and_up | miss_and_down
 overall_pct = correct.mean()
 
 print("Total events:", len(dataset))

@@ -22,7 +22,7 @@ def get_pre_post_earnings_closes(prices, earnings_date):
 
     if classification == "AMC": # After market closure: (before days is current day and after day is next day)
         before_days = prices[prices.index <= earnings_day] # price.index grabs the dates of prices and returns all dates before earnings_day (hence <=)
-        after_days = prices[prices.index > earnings_day] 
+        after_days = prices[prices.index > earnings_day] # .index grabs the row 
     else: # BMO
         before_days = prices[prices.index < earnings_day]
         after_days = prices[prices.index >= earnings_day]
