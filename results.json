@@ -1,0 +1,10 @@
+{
+  "tickers": ["AAPL", "MSFT", "NVDA", "GOOGL", "AMZN", "META", "TSLA", "JPM", "V", "JNJ", "WMT", "HD", "DIS", "KO", "PG"],
+  "num_events": 360,
+
+  "beat_events": 303,
+  "beat_up_pct": 0.535,
+  "miss_events": 43,
+  "miss_down_pct": 0.721,
+  "overall_correlation_pct": 0.536
+}
